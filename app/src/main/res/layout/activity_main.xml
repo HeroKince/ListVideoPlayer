@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.kince.listvideo.player.view.VideoPlayerView
+        <com.kince.listvideo.player.view.AbsVideoPlayerView
             android:id="@+id/video_player_view"
             android:layout_width="match_parent"
             android:layout_height="220dp"/>
@@ -35,6 +34,14 @@
                 android:layout_height="@dimen/button_height"
                 android:layout_marginTop="@dimen/button_margin"
                 android:text="Video in ViewPager And Fragment"
+                android:onClick="onClick"/>
+
+            <Button
+                android:id="@+id/video_in_fullscreen_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/button_margin"
+                android:text="全屏列表滑动"
                 android:onClick="onClick"/>
         </LinearLayout>
 

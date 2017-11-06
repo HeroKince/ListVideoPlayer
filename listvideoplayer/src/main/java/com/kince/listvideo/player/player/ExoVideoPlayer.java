@@ -118,10 +118,28 @@ public class ExoVideoPlayer extends AbsBaseVideoPlayer implements
         }
     }
 
+    /**
+     * 恢复播放
+     */
+    @Override
+    public void resume() {
+        if(mExoPlayer.getPlaybackState() == ExoPlayer.STATE_READY) {
+            mExoPlayer.setPlayWhenReady(true);
+        }
+    }
+
     @Override
     public void stop() {
         pause();
         mExoPlayer.stop();
+    }
+
+    /**
+     * 重置播放器
+     */
+    @Override
+    public void reset() {
+
     }
 
     @Override
@@ -131,12 +149,12 @@ public class ExoVideoPlayer extends AbsBaseVideoPlayer implements
     }
 
     @Override
-    public void setState(int state) {
+    public void setPlayerState(int state) {
         mState = state;
     }
 
     @Override
-    public int getState() {
+    public int getPlayerState() {
         return mState;
     }
 
@@ -155,15 +173,35 @@ public class ExoVideoPlayer extends AbsBaseVideoPlayer implements
         mExoPlayer.seekTo(position);
     }
 
+    /**
+     * 设置音量
+     *
+     * @param volume
+     */
+    @Override
+    public void setVolume(int volume) {
+
+    }
+
+    /**
+     * 获取当前音量
+     *
+     * @return
+     */
+    @Override
+    public int getVolume() {
+        return 0;
+    }
+
     /**--------------------- ExoPlayer.EventListener ----------------------------**/
     @Override
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
         if(playbackState == ExoPlayer.STATE_ENDED) {//播放结束
             onCompletion();
         } else if(playbackState == ExoPlayer.STATE_READY) {//准备播放
-            if(getState() == VideoPlayerState.STATE_LOADING) {//加载视频
+            if(getPlayerState() == VideoPlayerState.STATE_LOADING) {//加载视频
                 onPrepared();
-            } else if(getState() == VideoPlayerState.STATE_PLAYING_BUFFERING_START) {//seek to complete
+            } else if(getPlayerState() == VideoPlayerState.STATE_PLAYING_BUFFERING_START) {//seek to complete
                 onSeekComplete();
             }
         }

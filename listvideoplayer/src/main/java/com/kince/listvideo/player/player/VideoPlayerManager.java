@@ -183,13 +183,56 @@ public final class VideoPlayerManager implements IVideoPlayer.PlayCallback {
 
     public void release() {
         Utils.log("release player");
-        mPlayer.setState(VideoPlayerState.STATE_NORMAL);
+        mPlayer.setPlayerState(VideoPlayerState.STATE_NORMAL);
         removeTextureView();
         mPlayer.release();
         mPlayer = null;
         mObserverHash = -1;
         mVideoUrl = null;
         mScreenState = ScreenViewState.SCREEN_STATE_NORMAL;
+    }
+
+    /**
+     * 设置是否自动播放
+     * @param auto true则自动播放。
+     */
+    public void setAutoPlay(boolean auto){
+
+    }
+
+    /**
+     *
+     * @param auto
+     */
+    public void setRepeat(boolean auto){
+
+    }
+
+    /**
+     * 设置倍速播放速度
+     * @param speed 倍速值。范围0.5~2。
+     */
+    public void setPlaySpeed(float speed){
+
+    }
+
+    /**
+     * 设置边播边缓存的配置
+     * @param enable 是否可以边播边存。如果为true，则根据后面的几个参数决定是否能够缓存。
+     * @param saveDir 缓存的目录（绝对路径）
+     * @param maxDuration 能缓存的单个视频最大长度（单位：秒）。如果单个视频超过这个值，就不缓存。
+     * @param maxSize 缓存目录的所有缓存文件的总的最大大小（单位：MB）。如果超过则删除最旧文件，如果还是不够，则不缓存。
+     */
+    public void setPlayingCache(boolean enable, String saveDir, int maxDuration, long maxSize){
+
+    }
+
+    /**
+     * 设置网络超时时间
+     * @param mstimeout 超时时间，单位：ms
+     */
+    public void setNetworkTimeout(int mstimeout){
+
     }
 
     /**
@@ -236,7 +279,7 @@ public final class VideoPlayerManager implements IVideoPlayer.PlayCallback {
     }
 
     public int getState() {
-        return sVideoPlayerManager.mPlayer.getState();
+        return sVideoPlayerManager.mPlayer.getPlayerState();
     }
 
     @Override
@@ -273,7 +316,7 @@ public final class VideoPlayerManager implements IVideoPlayer.PlayCallback {
     }
 
     private void changeUIState(int state) {
-        mPlayer.setState(state);
+        mPlayer.setPlayerState(state);
         mPlayStateObservable.notify(new UIStateMessage(mObserverHash, mVideoUrl, state));
     }
 

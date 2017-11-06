@@ -13,33 +13,34 @@ import com.kince.listvideo.player.view.AbsVideoPlayerView;
 import java.util.List;
 
 /**
- *
- *
+ * Created by Kince183 on 2017/11/6.
  */
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
+public class FullVideoAdapter extends RecyclerView.Adapter<FullVideoAdapter.FullVideoViewHolder>{
 
     private Context mContext;
     private List<VideoBean> mVideoList;
     private int mScreenWidth;
+    private int mScreenHeight;
 
-    public VideoAdapter(Context context) {
+    public FullVideoAdapter(Context context) {
         mContext = context;
         mVideoList = VideoData.getVideoList();
         mScreenWidth = context.getResources().getDisplayMetrics().widthPixels;
+        mScreenHeight =  context.getResources().getDisplayMetrics().heightPixels;
     }
 
     @Override
-    public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FullVideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.video_item_view, parent, false);
         view.getLayoutParams().width = mScreenWidth;
-        view.getLayoutParams().height = (int) (mScreenWidth * 1.0f / 16 * 9 + 0.5f);
-        return new VideoViewHolder(view);
+        view.getLayoutParams().height = mScreenHeight;
+        return new FullVideoAdapter.FullVideoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(VideoViewHolder holder, int position) {
+    public void onBindViewHolder(FullVideoViewHolder holder, int position) {
         VideoBean video = mVideoList.get(position);
-        holder.mPlayerView.bind(video.getVideoUrl(), video.getVideoTitle());
+        holder.mPlayerView.bind(video.getVideoUrl(), video.getVideoTitle(),true);
         holder.mPlayerView.getThumbImageView().setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(mContext).load(video.getVideoThumbUrl()).into(holder.mPlayerView.getThumbImageView());
     }
@@ -49,10 +50,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         return mVideoList.size();
     }
 
-    class VideoViewHolder extends RecyclerView.ViewHolder {
+    class FullVideoViewHolder extends RecyclerView.ViewHolder {
         AbsVideoPlayerView mPlayerView;
 
-        public VideoViewHolder(View itemView) {
+        public FullVideoViewHolder(View itemView) {
             super(itemView);
             mPlayerView = itemView.findViewById(R.id.video_player_view);
         }

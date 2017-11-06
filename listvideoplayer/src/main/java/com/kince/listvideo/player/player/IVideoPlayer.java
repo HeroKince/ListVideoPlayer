@@ -4,8 +4,6 @@ import android.view.TextureView;
 
 import com.kince.listvideo.player.state.VideoPlayerState;
 
-import java.util.Map;
-
 /**
  * 播放器接口
  *
@@ -19,7 +17,7 @@ public interface IVideoPlayer {
     void start(String url);
 
     /**
-     * 继续播放当前视频
+     * 播放当前视频
      */
     void play();
 
@@ -29,9 +27,19 @@ public interface IVideoPlayer {
     void pause();
 
     /**
+     * 恢复播放
+     */
+    void resume();
+
+    /**
      * 停止播放,即结束当前视频的播放操作，但不释放资源
      */
     void stop();
+
+    /**
+     * 重置播放器
+     */
+    public void reset();
 
     /**
      * 释放资源
@@ -43,19 +51,19 @@ public interface IVideoPlayer {
      *
      * @param state {@link VideoPlayerState}
      */
-    void setState(int state);
+    void setPlayerState(int state);
 
     /**
      * 获取当前的播放状态
      *
      * @return {@link VideoPlayerState}
      */
-    int getState();
+    int getPlayerState();
 
     /**
      * 当前是否正在播放
      *
-     * @return boolean
+     * @return boolean 播放器处于播放或暂停时返回true，否则为false
      */
     boolean isPlaying();
 
@@ -84,6 +92,18 @@ public interface IVideoPlayer {
      * @param playCallback
      */
     void setPlayCallback(PlayCallback playCallback);
+
+    /**
+     * 设置音量
+     * @param volume
+     */
+    public void setVolume(int volume);
+
+    /**
+     * 获取当前音量
+     * @return
+     */
+    public int getVolume();
 
     /**
      * @param textureView

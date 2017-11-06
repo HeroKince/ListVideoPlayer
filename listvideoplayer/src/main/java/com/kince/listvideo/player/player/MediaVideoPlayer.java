@@ -30,7 +30,7 @@ public class MediaVideoPlayer extends AbsBaseVideoPlayer implements
     private static final int MSG_PREPARE = 1;
     private static final int MSG_RELEASE = 2;
 
-    protected MediaPlayer mMediaPlayer;
+    private MediaPlayer mMediaPlayer;
     private HandlerThread mMediaHandlerThread;
     private MediaHandler mMediaHandler;
 
@@ -59,7 +59,7 @@ public class MediaVideoPlayer extends AbsBaseVideoPlayer implements
         try {
             mMediaPlayer.setSurface(new Surface(surface));
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         super.onSurfaceTextureAvailable(surface, width, height);
     }
@@ -117,14 +117,30 @@ public class MediaVideoPlayer extends AbsBaseVideoPlayer implements
 
     @Override
     public void pause() {
-        if (getState() == VideoPlayerState.STATE_PLAYING) {
+        if (getPlayerState() == VideoPlayerState.STATE_PLAYING) {
             mMediaPlayer.pause();
         }
+    }
+
+    /**
+     * 恢复播放
+     */
+    @Override
+    public void resume() {
+        mMediaPlayer.start();
     }
 
     @Override
     public void stop() {
         mMediaHandler.obtainMessage(MSG_RELEASE).sendToTarget();
+    }
+
+    /**
+     * 重置播放器
+     */
+    @Override
+    public void reset() {
+
     }
 
     @Override
@@ -133,12 +149,12 @@ public class MediaVideoPlayer extends AbsBaseVideoPlayer implements
     }
 
     @Override
-    public void setState(int state) {
+    public void setPlayerState(int state) {
         mState = state;
     }
 
     @Override
-    public int getState() {
+    public int getPlayerState() {
         return mState;
     }
 
@@ -155,6 +171,26 @@ public class MediaVideoPlayer extends AbsBaseVideoPlayer implements
     @Override
     public void seekTo(int position) {
         mMediaPlayer.seekTo(position);
+    }
+
+    /**
+     * 设置音量
+     *
+     * @param volume
+     */
+    @Override
+    public void setVolume(int volume) {
+
+    }
+
+    /**
+     * 获取当前音量
+     *
+     * @return
+     */
+    @Override
+    public int getVolume() {
+        return 0;
     }
 
     @Override

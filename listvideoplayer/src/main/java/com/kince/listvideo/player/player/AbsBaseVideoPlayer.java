@@ -30,33 +30,17 @@ public abstract class AbsBaseVideoPlayer implements IVideoPlayer, TextureView.Su
     // 是否开启日志
     protected boolean mEnableLog;
 
-    /**
-     * Invoked when a {@link TextureView}'s SurfaceTexture is ready for use.
-     *
-     * @param surface The surface returned by
-     *                {@link TextureView#getSurfaceTexture()}
-     * @param width   The width of the surface
-     * @param height  The height of the surface
-     */
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
         if (mEnableLog) {
             Log.i("ListVideoPlayer", "AbsBaseVideoPlayer onSurfaceTextureAvailable");
         }
-        if (mSurfaceTexture == null && (getState() == VideoPlayerState.STATE_NORMAL || getState() == VideoPlayerState.STATE_LOADING)) {
+        if (mSurfaceTexture == null && (getPlayerState() == VideoPlayerState.STATE_NORMAL || getPlayerState() == VideoPlayerState.STATE_LOADING)) {
             prepare();
         }
         mSurfaceTexture = surface;
     }
 
-    /**
-     * Invoked when the {@link SurfaceTexture}'s buffers size changed.
-     *
-     * @param surface The surface returned by
-     *                {@link TextureView#getSurfaceTexture()}
-     * @param width   The new width of the surface
-     * @param height  The new height of the surface
-     */
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
         if (mEnableLog) {
@@ -64,14 +48,6 @@ public abstract class AbsBaseVideoPlayer implements IVideoPlayer, TextureView.Su
         }
     }
 
-    /**
-     * Invoked when the specified {@link SurfaceTexture} is about to be destroyed.
-     * If returns true, no rendering should happen inside the surface texture after this method
-     * is invoked. If returns false, the client needs to call {@link SurfaceTexture#release()}.
-     * Most applications should return true.
-     *
-     * @param surface The surface about to be destroyed
-     */
     @Override
     public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
         if (mEnableLog) {
@@ -80,12 +56,6 @@ public abstract class AbsBaseVideoPlayer implements IVideoPlayer, TextureView.Su
         return false;
     }
 
-    /**
-     * Invoked when the specified {@link SurfaceTexture} is updated through
-     * {@link SurfaceTexture#updateTexImage()}.
-     *
-     * @param surface The surface just updated
-     */
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
         if (mEnableLog) {
@@ -103,8 +73,8 @@ public abstract class AbsBaseVideoPlayer implements IVideoPlayer, TextureView.Su
         if (mEnableLog) {
             Log.i("ListVideoPlayer", "AbsBaseVideoPlayer isPlaying");
         }
-        return (getState() == VideoPlayerState.STATE_PLAYING ||
-                getState() == VideoPlayerState.STATE_PLAYING_BUFFERING_START) &&
+        return (getPlayerState() == VideoPlayerState.STATE_PLAYING ||
+                getPlayerState() == VideoPlayerState.STATE_PLAYING_BUFFERING_START) &&
                 getCurrentPosition() < getDuration();
     }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.TextureView;
 
 /**
- * Created by XiaoJianjun on 2017/6/21.
+ * Created by Kince
  * 重写TextureView，适配视频的宽高和旋转.
  * （参考自节操播放器 https://github.com/lipangit/JieCaoVideoPlayer）
  */
@@ -35,7 +35,6 @@ public class NiceTextureView extends TextureView {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
         float viewRotation = getRotation();
 
         // 如果判断成立，则说明显示的TextureView和本身的位置是有90度的旋转的，所以需要交换宽高参数。
@@ -102,4 +101,5 @@ public class NiceTextureView extends TextureView {
         }
         setMeasuredDimension(width, height);
     }
+
 }

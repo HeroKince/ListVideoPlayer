@@ -6,19 +6,24 @@ package com.kince.listvideo.player.state;
 public final class ScreenViewState {
 
     /**
-     * 普通模式
+     * 普通列表滑动模式（宽大于高）
      */
     public static final int SCREEN_STATE_NORMAL = 1;
 
     /**
-     * 全屏模式
+     * 全屏列表滑动模式（高大于宽）
      */
-    public static final int SCREEN_STATE_FULLSCREEN = 2;
+    public static final int SCREEN_STATE_LIST_FULLSCREEN = 2;
 
     /**
-     * 小窗口模式
+     * 单个视频全屏模式
      */
-    public static final int SCREEN_STATE_SMALL_WINDOW = 3;
+    public static final int SCREEN_STATE_FULLSCREEN = 3;
+
+    /**
+     * 单个视频小窗口模式
+     */
+    public static final int SCREEN_STATE_SMALL_WINDOW = 4;
 
     public static boolean isFullScreen(int screenState) {
         return screenState == SCREEN_STATE_FULLSCREEN;
@@ -30,6 +35,10 @@ public final class ScreenViewState {
 
     public static boolean isNormal(int screenState) {
         return screenState == SCREEN_STATE_NORMAL;
+    }
+
+    public static boolean isFullScreenList(int screenState) {
+        return screenState == SCREEN_STATE_LIST_FULLSCREEN;
     }
 
 }

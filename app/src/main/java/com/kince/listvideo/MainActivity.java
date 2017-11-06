@@ -7,15 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.kince.listvideo.player.player.VideoPlayerManager;
-import com.kince.listvideo.player.view.VideoPlayerView;
+import com.kince.listvideo.player.view.AbsVideoPlayerView;
 
 public class MainActivity extends AppCompatActivity {
 
-    VideoPlayerView mPlayerView;
+    AbsVideoPlayerView mPlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mPlayerView = findViewById(R.id.video_player_view);
@@ -34,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.video_in_viewpager_fragment:
                 startActivity(new Intent(this, ViewPagerFragmentActivity.class));
+                break;
+            case R.id.video_in_fullscreen_recyclerView:
+                startActivity(new Intent(this, FullVideoListActivity.class));
                 break;
         }
     }
