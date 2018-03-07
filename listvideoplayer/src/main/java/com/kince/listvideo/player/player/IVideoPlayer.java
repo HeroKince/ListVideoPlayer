@@ -5,8 +5,8 @@ import android.view.TextureView;
 import com.kince.listvideo.player.state.VideoPlayerState;
 
 /**
+ * Created by Kince
  * 播放器接口
- *
  */
 public interface IVideoPlayer {
 
@@ -39,7 +39,7 @@ public interface IVideoPlayer {
     /**
      * 重置播放器
      */
-    public void reset();
+    void reset();
 
     /**
      * 释放资源
@@ -97,13 +97,13 @@ public interface IVideoPlayer {
      * 设置音量
      * @param volume
      */
-    public void setVolume(int volume);
+    void setVolume(int volume);
 
     /**
      * 获取当前音量
      * @return
      */
-    public int getVolume();
+    int getVolume();
 
     /**
      * @param textureView

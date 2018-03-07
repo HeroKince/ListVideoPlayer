@@ -1,4 +1,4 @@
-package com.kince.listvideo.player.player;
+package com.kince.listvideo.player.config;
 
 import android.content.Context;
 
@@ -12,33 +12,27 @@ import com.kince.listvideo.player.utils.Utils;
 import java.io.File;
 
 /**
+ * Created by Kince
  * 播放器相关功能开关配置
  */
 public final class VideoPlayerConfig {
 
+    // 视频最大缓存数量
     private static final int DEFAULT_VIDEO_CACHE_COUNT = 10;
 
-    /**
-     * 播放器工厂
-     * <p>
-     * 通过配置工厂可以实现自定义播放器，不管是用MediaPlayer还是ExoPlayer，还是其他的视频播放库均可以自行定义
-     */
+    /* 通过配置播放器工厂可以实现自定义播放器，不管是用MediaPlayer还是ExoPlayer，还是其他的视频播放库均可以自行定义*/
     private IVideoPlayerFactory mPlayerFactory;
-    /**
-     * 是否开启自动小窗口播放功能
-     */
+
+    // 是否开启自动小窗口播放功能
     private boolean mSmallWindowPlayEnable;
-    /**
-     * 缓存功能是否开启
-     */
+
+    // 缓存功能是否开启
     private boolean mCacheEnable;
-    /**
-     * 日志输出功能是否开启
-     */
+
+    // 日志输出功能是否开启
     private boolean mLogEnable;
-    /**
-     * 缓存代理实现，{@link #mCacheEnable}必须为true才能生效
-     */
+
+    /* 缓存代理实现，{@link #mCacheEnable}必须为true才能生效 */
     private HttpProxyCacheServer mCacheProxy;
 
     private VideoPlayerConfig(Builder builder) {
@@ -66,20 +60,18 @@ public final class VideoPlayerConfig {
     }
 
     public final static class Builder {
+
         private Context context;
         private IVideoPlayerFactory playerFactory;
         private boolean smallWindowPlayEnable = false;
-        /**
-         * 是否开启缓存，默认不开启
-         */
+
+        // 是否开启缓存，默认不开启
         private boolean cacheEnable = false;
-        /**
-         * 日志输出功能是否开启
-         */
+
+        // 日志输出功能是否开启
         private boolean logEnable;
-        /**
-         * 缓存代理实现
-         */
+
+        // 缓存代理实现
         private HttpProxyCacheServer proxy;
 
         /**
@@ -89,7 +81,7 @@ public final class VideoPlayerConfig {
             this.context = ctx;
         }
 
-        protected Builder() {
+        public Builder() {
 
         }
 

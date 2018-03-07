@@ -44,10 +44,13 @@ import com.kince.listvideo.player.state.VideoPlayerState;
 import java.util.List;
 
 /**
+ * Created by Kince
+ *
  * 继承此类时，如果想要获取当前正在播放的视频url，请用如下方式获取：
  * {@link VideoPlayerManager#getVideoUrl()}
  * 因为此处的{@link #mUrl} 在开启缓存时是视频的缓存代理地址，不是
  * 用户播放视频时所传入的地址
+ *
  */
 public class ExoVideoPlayer extends AbsBaseVideoPlayer implements
         SimpleExoPlayer.VideoListener,

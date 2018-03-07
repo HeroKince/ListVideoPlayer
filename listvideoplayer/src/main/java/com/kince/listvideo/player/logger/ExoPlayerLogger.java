@@ -40,6 +40,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
+ * Created by Kince
  * Logs player events using {@link Log}.
  */
 public final class ExoPlayerLogger implements ExoPlayer.EventListener,

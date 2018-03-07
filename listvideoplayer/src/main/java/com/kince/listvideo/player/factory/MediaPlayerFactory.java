@@ -4,6 +4,7 @@ import com.kince.listvideo.player.player.AbsBaseVideoPlayer;
 import com.kince.listvideo.player.player.MediaVideoPlayer;
 
 /**
+ * Created by Kince
  * 创建基于MediaPlayer实现的播放器
  */
 public class MediaPlayerFactory implements IVideoPlayerFactory {

@@ -49,9 +49,12 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Created by Kince
+ *
  * 播放器视图，只起到展示视频的作用，视频播放的真正控制交由
  * {@link VideoPlayerManager}实现
  * 提供了视频播放最基本的功能，可以继承进行拓展
+ *
  */
 public class AbsVideoPlayerView extends RelativeLayout implements
         IVideoPlayerView,

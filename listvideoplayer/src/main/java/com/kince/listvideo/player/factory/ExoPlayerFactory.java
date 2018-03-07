@@ -6,6 +6,7 @@ import com.kince.listvideo.player.player.AbsBaseVideoPlayer;
 import com.kince.listvideo.player.player.ExoVideoPlayer;
 
 /**
+ * Created by Kince
  * 创建基于ExoPlayer实现的播放器
  */
 public class ExoPlayerFactory implements IVideoPlayerFactory {

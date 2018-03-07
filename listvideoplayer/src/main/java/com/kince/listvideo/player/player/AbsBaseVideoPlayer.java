@@ -10,25 +10,31 @@ import com.kince.listvideo.player.state.VideoPlayerState;
  * Created by Kince
  * 基类播放器
  */
-public abstract class AbsBaseVideoPlayer implements IVideoPlayer, TextureView.SurfaceTextureListener {
+public abstract class AbsBaseVideoPlayer implements
+        IVideoPlayer, TextureView.SurfaceTextureListener {
 
-    /**
-     * 准备播放
-     */
-    protected abstract void prepare();
-    /**
-     * 播放器状态回调
-     */
+    // 播放器状态
     protected int mState = VideoPlayerState.STATE_NORMAL;
+
+    // 播放地址
     protected String mUrl;
+
+     /* 播放器状态回调 */
     protected PlayCallback mPlayCallback;
+
     /**
      * 配合播放器使用
      */
     protected TextureView mTextureView;
     protected SurfaceTexture mSurfaceTexture;
+
     // 是否开启日志
     protected boolean mEnableLog;
+
+    /**
+     * 准备播放
+     */
+    protected abstract void prepare();
 
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -91,8 +97,12 @@ public abstract class AbsBaseVideoPlayer implements IVideoPlayer, TextureView.Su
         mPlayCallback = playCallback;
     }
 
-    public void setEnableLog(boolean mEnableLog) {
-        this.mEnableLog = mEnableLog;
+    /**
+     * 是否开启日志
+     * @param enableLog
+     */
+    public void setEnableLog(boolean enableLog) {
+        this.mEnableLog = enableLog;
     }
 
     /**

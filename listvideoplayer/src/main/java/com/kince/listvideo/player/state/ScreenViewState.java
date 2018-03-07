@@ -1,6 +1,7 @@
 package com.kince.listvideo.player.state;
 
 /**
+ * Created by Kince
  * 屏幕状态
  */
 public final class ScreenViewState {

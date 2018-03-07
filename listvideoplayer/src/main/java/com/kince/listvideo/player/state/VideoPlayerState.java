@@ -1,6 +1,7 @@
 package com.kince.listvideo.player.state;
 
 /**
+ * Created by Kince
  * 播放器播放状态
  *
  */

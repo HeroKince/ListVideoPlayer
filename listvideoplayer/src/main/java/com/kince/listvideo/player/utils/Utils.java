@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 /**
- *
+ * Created by Kince
  */
 public class Utils {
     private static final String UNKNOWN_SIZE = "00:00";

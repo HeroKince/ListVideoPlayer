@@ -3,7 +3,7 @@ package com.kince.listvideo;
 import android.app.Application;
 
 import com.kince.listvideo.player.factory.ExoPlayerFactory;
-import com.kince.listvideo.player.player.VideoPlayerConfig;
+import com.kince.listvideo.player.config.VideoPlayerConfig;
 import com.kince.listvideo.player.player.VideoPlayerManager;
 
 /**

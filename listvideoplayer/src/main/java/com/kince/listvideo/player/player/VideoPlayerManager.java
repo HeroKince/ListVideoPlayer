@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.TextureView;
 import android.view.ViewGroup;
 
+import com.kince.listvideo.player.config.VideoPlayerConfig;
 import com.kince.listvideo.player.message.BackPressedMessage;
 import com.kince.listvideo.player.message.DurationMessage;
 import com.kince.listvideo.player.message.Message;
@@ -17,20 +18,28 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
+ * Created by Kince
+ *
  * 视频播放管理类，主要与视频展示展示UI进行交互，视频播放的具体操作交
  * 由播放器抽象类{@link AbsBaseVideoPlayer}实现
  * 通过此管理类达到视频播放控制与UI层的解耦，同时便于自定义播放器
+ *
  */
 public final class VideoPlayerManager implements IVideoPlayer.PlayCallback {
     private static final String TAG = "PlayerManager";
 
     private static volatile VideoPlayerManager sVideoPlayerManager;
 
+    // 播放器实例
     private AbsBaseVideoPlayer mPlayer;
+    // 播放状态观察者
     private PlayStateObservable mPlayStateObservable;
+    // 当前播放地址
     private String mVideoUrl;
     private int mObserverHash = -1;
+    // 当前模仿窗口模式
     private int mScreenState = ScreenViewState.SCREEN_STATE_NORMAL;
+    // 播放相关配置
     private VideoPlayerConfig mVideoPlayerConfig;
 
     /**
