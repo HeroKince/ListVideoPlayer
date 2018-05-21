@@ -138,6 +138,7 @@ public class MediaVideoPlayer extends AbsBaseVideoPlayer implements
         mMediaHandler.obtainMessage(MSG_RELEASE).sendToTarget();
     }
 
+
     /**
      * 重置播放器
      */
